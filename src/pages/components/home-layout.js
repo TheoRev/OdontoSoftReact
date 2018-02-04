@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HomeLayout = (props) => (
-    <h1>HOLA MUNDO DESDE REACT_JS</h1>
+    <section>{props.children}</section>
 );
 
 export default HomeLayout;

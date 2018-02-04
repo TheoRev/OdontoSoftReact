@@ -1,0 +1,2 @@
+export const OPEN_OPTIONS = 'OPEN_OPTIONS';
+export const CLOSE_OPTIONS = 'CLOSE_OPTIONS';
