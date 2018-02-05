@@ -4,7 +4,6 @@ import FlatButton from 'material-ui/FlatButton';
 
 const MenuBar = (props) => {
     return (
-
         <AppBar
             title="OdontoSoft"
             iconElementRight={props.iconLogger}

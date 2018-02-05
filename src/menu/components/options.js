@@ -8,7 +8,11 @@ const Options = (props) => {
         <Drawer
             docked={true}
             open={props.optionsVisivility}
-            containerStyle={{ left: '10px', top: '75px', 'backgroundColor': '#7DF4A6' }}
+            containerStyle={{ 
+                left: '10px', 
+                top: '75px', 
+                // 'backgroundColor': '#7DF4A6' 
+            }}
             zDepth={5}
         >
             <MenuItem>PACIENTES</MenuItem>

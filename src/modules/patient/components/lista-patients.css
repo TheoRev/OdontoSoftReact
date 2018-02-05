@@ -1,0 +1,52 @@
+.action-buttons {
+    display: inline;
+}
+
+.icon-style {
+    /* margin: 12; */
+}
+
+.col-small-tam {
+    width: 20px;
+    text-align: center;
+}
+.col-medium-tam {
+    width: 80px;
+    text-align: center;
+}
+.col-big-tam {
+    width: 250px;
+    /* text-align: center; */
+}
+
+.col-actions{
+    text-align: center;
+}
+
+.btn{
+    width: 25px;
+}
+
+.header{
+    display: inline-flex;
+    width: 100%;
+}
+
+.titulo{
+    width: 80%;
+}
+
+.add{
+    margin-top: 15px;
+    margin-right: 70px;
+    width: 20%;
+    text-align: right;
+}
+
+.add-button{
+    
+}
+
+.action-column{
+    width: 150px;
+}
