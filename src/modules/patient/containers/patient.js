@@ -7,26 +7,22 @@ import FormPatient from '../components/form-patient';
 class Patient extends Component {
 
     state = {
-        patient: {
-            ID: 0,
-            date_init: '',
-            nom_ape: "",
-            age: "",
-            masc: true,
-            fem: false,
-            sex: "",
-            date_nac: "",
-            address: "",
-            ocupation: "",
-            tel_cel: "",
-            alergies: "",
-            operations: "",
-            diabettes: false,
-            hipertension: false,
-            others: "",
-            treat_medics: "",
-            state: true,
-        },
+        ID: 0,
+        date_init: new Date(),
+        nom_ape: "",
+        age: 1,
+        sex: "F",
+        date_nac: null,
+        address: "",
+        ocupation: "",
+        tel_cel: "",
+        alergies: "",
+        operations: "",
+        diabettes: false,
+        hipertension: false,
+        others: "",
+        treat_medics: "",
+        state: true,
         p1: {
             ID: 0,
             date_init: '',
@@ -71,6 +67,69 @@ class Patient extends Component {
         titulo: '',
         openSate: false
     }
+
+    msgValidator = 'Este campo es necesario';
+
+    setId = event => {
+        this.setState({ ID: event.target.value });
+    };
+
+    setDateInit = (event, date) => {
+        console.log(date);
+        this.setState({ date_init: date });
+    };
+
+    setNomApe = event => {
+        this.setState({ nom_ape: event.target.value });
+    };
+
+    setAge = event => {
+        this.setState({ age: event.target.value });
+    };
+
+    setSex = event => {
+        // console.log(event.target.value);
+        this.setState({ sex: event.target.value });
+    };
+
+    setFecNac = (event, date) => {
+        this.setState({ date_nac: date });
+    };
+
+    setAddress = event => {
+        this.setState({ address: event.target.value });
+    };
+
+    setOcupation = event => {
+        this.setState({ ocupation: event.target.value });
+    };
+
+    setTelefCel = event => {
+        this.setState({ tel_cel: event.target.value });
+    };
+    setAlergies = event => {
+        this.setState({ alergies: event.target.value });
+    };
+    setOperations = event => {
+        this.setState({ operations: event.target.value });
+    };
+
+    setDiabettes = event => {
+        this.setState({ diabettes: (event.target.checked) ? event.target.checked : false });
+    };
+
+    setHipertension = event => {
+        console.log(event.target.checked);
+        this.setState({ hipertension: (event.target.checked) ? event.target.checked : false });
+    };
+
+    setOthers = event => {
+        this.setState({ others: event.target.value });
+    };
+
+    setTreatMedics = event => {
+        this.setState({ treat_medics: event.target.value });
+    };
 
     handleOpenForm = (event) => {
         console.log('clicked in floatingButtton');
@@ -128,8 +187,11 @@ class Patient extends Component {
     }
 
     componentDidMount() {
+        // this.setState({
+        //     patient.date_init: new Date(),
+        // });
         superagent
-            .get('http://192.168.1.35:3030/api/patients')
+            .get('http://192.168.1.66:3030/api/patients')
             .end((err, resp) => {
                 const pacientes = JSON.parse(resp.text);
                 this.setState({
@@ -145,7 +207,42 @@ class Patient extends Component {
         return (
             <PatientLayout>
                 <ListaPatients patients={this.state.patients} handleOpenForm={this.handleOpenForm} />
-                <FormPatient openSate={this.state.openSate} titulo={this.state.titulo} handleCloseForm={this.handleCloseForm} />
+                <FormPatient
+                    msgValidator={this.msgValidator}
+                    openSate={this.state.openSate}
+                    titulo={this.state.titulo}
+                    handleCloseForm={this.handleCloseForm}
+                    ID={this.state.ID}
+                    date_init={this.state.date_init}
+                    nom_ape={this.state.nom_ape}
+                    age={this.state.age}
+                    sex={this.state.sex}
+                    date_nac={this.state.date_nac}
+                    address={this.state.address}
+                    ocupation={this.state.ocupation}
+                    tel_cel={this.state.tel_cel}
+                    alergies={this.state.alergies}
+                    operations={this.state.operations}
+                    diabettes={this.state.diabettes}
+                    hipertension={this.state.hipertension}
+                    others={this.state.others}
+                    treat_medics={this.state.treat_medics}
+                    setId={this.setId}
+                    setDateInit={this.setDateInit}
+                    setNomApe={this.setNomApe}
+                    setAge={this.setAge}
+                    setSex={this.setSex}
+                    setFecNac={this.setFecNac}
+                    setAddress={this.setAddress}
+                    setOcupation={this.setOcupation}
+                    setTelefCel={this.setTelefCel}
+                    setAlergies={this.setAlergies}
+                    setOperations={this.setOperations}
+                    setDiabettes={this.setDiabettes}
+                    setHipertension={this.setHipertension}
+                    setOthers={this.setOthers}
+                    setTreatMedics={this.setTreatMedics}
+                />
             </PatientLayout>
         )
     }

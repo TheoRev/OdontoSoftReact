@@ -1,0 +1,16 @@
+.grid {
+    display: grid;
+     /* grid-template-columns: 300px 300px 300px 0px;
+     grid-template-rows: 50px 100px 50px 100px; */
+     grid-template-columns: 350px 350px 350px;
+     grid-template-rows: 100px 100px 100px 100px;
+}
+
+.a {
+    grid-column-start: 1;
+    grid-row-end: 2;
+}
+
+input{
+    margin-right: 15px;
+}

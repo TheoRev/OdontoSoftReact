@@ -16,7 +16,8 @@ module.exports = env => {
       "odontosoftreact": path.resolve(__dirname, "src/entries/home.js")
     },
     output: {
-      path: path.resolve(__dirname, "dist"),
+      // path: path.resolve(__dirname, "dist"),
+      path: path.resolve('D:/Docs/WS_Go/src/github.com/TheoRev/OdontoSoftGo/public', "dist"),
       // filename: "js/[name].[hash].js",
       filename: "js/[name].js",
       publicPath: path.resolve(__dirname, "dist") + "/",
