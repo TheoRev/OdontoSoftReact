@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import superagent from 'superagent';
 import PatientLayout from '../components/patient-layout';
 import ListaPatients from '../components/lista-patients';
@@ -41,7 +41,7 @@ class Patient extends Component {
             hipertension: false,
             others: "",
             treat_medics: "",
-            state: true,
+            state: true
         },
         p2: {
             ID: 0,
@@ -61,7 +61,7 @@ class Patient extends Component {
             hipertension: false,
             others: "",
             treat_medics: "",
-            state: true,
+            state: true
         },
         patients: [],
         titulo: '',
@@ -71,78 +71,91 @@ class Patient extends Component {
     msgValidator = 'Este campo es necesario';
 
     setId = event => {
-        this.setState({ ID: event.target.value });
+        this.setState({ID: event.target.value});
     };
 
     setDateInit = (event, date) => {
         console.log(date);
-        this.setState({ date_init: date });
+        this.setState({date_init: date});
     };
 
     setNomApe = event => {
-        this.setState({ nom_ape: event.target.value });
+        this.setState({
+            nom_ape: event
+                .target
+                .value
+                .toUpperCase()
+        });
     };
 
     setAge = event => {
-        this.setState({ age: event.target.value });
+        this.setState({age: event.target.value});
     };
 
     setSex = event => {
         // console.log(event.target.value);
-        this.setState({ sex: event.target.value });
+        this.setState({sex: event.target.value});
     };
 
     setFecNac = (event, date) => {
-        this.setState({ date_nac: date });
+        this.setState({date_nac: date});
     };
 
     setAddress = event => {
-        this.setState({ address: event.target.value });
+        this.setState({
+            address: event
+                .target
+                .value
+                .toUpperCase()
+        });
     };
 
     setOcupation = event => {
-        this.setState({ ocupation: event.target.value });
+        this.setState({ocupation: event.target.value.toUpperCase()});
     };
 
     setTelefCel = event => {
-        this.setState({ tel_cel: event.target.value });
+        this.setState({tel_cel: event.target.value});
     };
     setAlergies = event => {
-        this.setState({ alergies: event.target.value });
+        this.setState({alergies: event.target.value.toUpperCase()});
     };
     setOperations = event => {
-        this.setState({ operations: event.target.value });
+        this.setState({operations: event.target.value.toUpperCase()});
     };
 
     setDiabettes = event => {
-        this.setState({ diabettes: (event.target.checked) ? event.target.checked : false });
+        this.setState({
+            diabettes: (event.target.checked)
+                ? event.target.checked
+                : false
+        });
     };
 
     setHipertension = event => {
         console.log(event.target.checked);
-        this.setState({ hipertension: (event.target.checked) ? event.target.checked : false });
+        this.setState({
+            hipertension: (event.target.checked)
+                ? event.target.checked
+                : false
+        });
     };
 
     setOthers = event => {
-        this.setState({ others: event.target.value });
+        this.setState({others: event.target.value.toUpperCase()});
     };
 
     setTreatMedics = event => {
-        this.setState({ treat_medics: event.target.value });
+        this.setState({treat_medics: event.target.value.toUpperCase()});
     };
 
     handleOpenForm = (event) => {
         console.log('clicked in floatingButtton');
-        this.setState({
-            openSate: true,
-            titulo: 'NUEVO'
-        });
+        this.setState({openSate: true, titulo: 'NUEVO'});
     }
 
     handleCloseForm = (event) => {
-        this.setState({
-            openSate: false
-        });
+        this.setState({openSate: false});
     }
 
     intitPacientes = () => {
@@ -187,15 +200,15 @@ class Patient extends Component {
     }
 
     componentDidMount() {
-        // this.setState({
-        //     patient.date_init: new Date(),
-        // });
+        // this.setState({     patient.date_init: new Date(), });
         superagent
-            .get('http://192.168.1.66:3030/api/patients')
+            .get('http://localhost:3030/api/patients')
             .end((err, resp) => {
                 const pacientes = JSON.parse(resp.text);
                 this.setState({
-                    patients: (pacientes != null) ? pacientes : intitPacientes()
+                    patients: (pacientes != null)
+                        ? pacientes
+                        : intitPacientes()
                 });
                 console.log(this.state.patients);
             });
@@ -206,7 +219,9 @@ class Patient extends Component {
 
         return (
             <PatientLayout>
-                <ListaPatients patients={this.state.patients} handleOpenForm={this.handleOpenForm} />
+                <ListaPatients
+                    patients={this.state.patients}
+                    handleOpenForm={this.handleOpenForm}/>
                 <FormPatient
                     msgValidator={this.msgValidator}
                     openSate={this.state.openSate}
@@ -241,8 +256,7 @@ class Patient extends Component {
                     setDiabettes={this.setDiabettes}
                     setHipertension={this.setHipertension}
                     setOthers={this.setOthers}
-                    setTreatMedics={this.setTreatMedics}
-                />
+                    setTreatMedics={this.setTreatMedics}/>
             </PatientLayout>
         )
     }

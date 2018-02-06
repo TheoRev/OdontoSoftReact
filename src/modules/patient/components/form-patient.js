@@ -44,12 +44,13 @@ const FormPatient = (props) => {
 
     ];
 
-    let DateTimeFormat = global.Intl.DateTimeFormat;
     const IntlPolyfill = require('intl');
+    let DateTimeFormat = global.Intl.DateTimeFormat;
     DateTimeFormat = IntlPolyfill.DateTimeFormat;
     require('intl/locale-data/jsonp/fr');
     require('intl/locale-data/jsonp/fa-IR');
-    let moment = require('moment');
+    // require('intl/locale-data/jsonp/es-PE');
+    // let moment = require('moment');
 
     return (
         <Dialog
@@ -131,7 +132,6 @@ const FormPatient = (props) => {
                         inputStyle={{ fontSize: "10pt" }}
                         value={props.date_nac}
                         onChange={props.setFecNac}
-                        locale="es-PE"
                         formatDate={
                             new DateTimeFormat('es-PE',{
                                 day:'numeric',
